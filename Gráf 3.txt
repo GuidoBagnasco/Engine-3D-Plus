@@ -1,0 +1,37 @@
+Unidades:
+
+1. Animación esqueletal
+2. Visibilidad
+3. Shaders
+
+
+Modelos compuestos por:
+  Vértices: posición, [u,v], color
+  Textura
+  Nodos
+  
+  La animación esqueletal tiene frames. Los frames poseen un tiempo y varias transformaciones.
+  
+  Van a haber bones, que contienen su respectiva transformación. Cada vértice va a tener un peso. Los vértices ya no contienen posición.
+  
+  La sumatoria de todos los weight tiene que dar 1.
+  
+  La transformación de un vértice en un momento determinado se obtiene como:
+  Tv = B1*W1 + B2*W2 + .... + Bn*Wn
+  
+  La animación da posiciones para un esqueleto completo, en un determinado momento, frames.
+  
+  F1 => B1 -> Tf1b1
+     => B2 -> Tf1b2
+  tF1
+  
+  F2 => B1 -> Tf2b1
+     => B2 -> Tf2b2
+  tF2
+  
+  Interpolación es calcular la diferencia de tiempo entre 2 frames, y calcular la posición del vértice para ese tiempo.
+  
+    tn => TtnB1 = %Tf1b1 + %Tf2b1       La suma de los porcentajes da 100%
+       => TtnB2 = %Tf1b2 + %Tf2b2
+       
+  % = tx*100 / (Tf-Ti)
